@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBGAPI", "OBGAPI\OBGAPI.csproj", "{7DAEC6CB-236D-4F2F-9D71-936C008317EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DAEC6CB-236D-4F2F-9D71-936C008317EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DAEC6CB-236D-4F2F-9D71-936C008317EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DAEC6CB-236D-4F2F-9D71-936C008317EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DAEC6CB-236D-4F2F-9D71-936C008317EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21952A59-B8E5-46FD-ABF3-ED1C853B59B1}
+	EndGlobalSection
+EndGlobal
