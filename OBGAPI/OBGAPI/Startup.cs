@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OBGAPI.DataModels;
+using OBGAPI.Repos;
+using Microsoft.EntityFrameworkCore;
 
 namespace OBGAPI
 {
@@ -22,8 +25,15 @@ namespace OBGAPI
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+
         {
+            services.AddScoped<IFactRepo, FactRepo>();
+            services.AddDbContext<FactContext>(
+              options => options.UseSqlite());
+            services.AddControllers();
             services.AddRazorPages();
+            services.AddSwaggerGen();
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +52,12 @@ namespace OBGAPI
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Our Black Gems API V1");
+                c.RoutePrefix = string.Empty; //so that we can start the UI at the base url
+            });
             app.UseRouting();
 
             app.UseAuthorization();
