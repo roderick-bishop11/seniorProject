@@ -24,7 +24,7 @@ namespace OBGAPI.Controllers
         }
         
   
-        // GET api/fact -> will return the fact of the day. 
+        //returns a single FACT entity at random
         [HttpGet]
         public async Task<ActionResult<Fact>> Get()
         {
