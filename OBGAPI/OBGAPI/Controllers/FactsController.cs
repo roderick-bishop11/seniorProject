@@ -16,21 +16,31 @@ namespace OBGAPI.Controllers
 
     {
         private readonly IFactRepo factRepo;
+        List<Fact> testFacts = new List<Fact>(); //testing
 
 
         public FactsController(IFactRepo factRepo)
         {
             this.factRepo = factRepo;
+
+            //testing
+            testFacts.Add(new Fact{date = DateTime.Today(), fact = "October 7. Toni Morrison was the first black American to win the Nobel Prize in Literature.", link = "https://www.fs.fed.us/people/aasg/calendar/timeline.html"})
         }
         
   
-        //returns a single FACT entity at random
-        [HttpGet]
-        public async Task<ActionResult<Fact>> Get()
-        {
+        // //returns a single FACT entity at random
+        // [HttpGet]
+        // public async Task<ActionResult<Fact>> Get()
+        // {
 
-            return await factRepo.Get();
+        //     return await factRepo.Get();
+        // }
+
+        [HttpGet]
+        public List<Fact> Get(){
+            return testFacts;
         }
+
 
         [HttpPost]
         public async Task<ActionResult<Fact>> Post([FromBody]Fact fact)
