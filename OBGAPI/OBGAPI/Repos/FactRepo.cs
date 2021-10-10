@@ -6,7 +6,7 @@ namespace OBGAPI.Repos
 {
     public class FactRepo : IFactRepo
     {
-        private readonly FactContext _context; 
+        private readonly FactContext _context;  //db context
 
         //injects the context into the constructor
         public FactRepo(FactContext context)

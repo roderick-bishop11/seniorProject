@@ -12,7 +12,7 @@ namespace OBGAPI.Controllers {
     [ApiController]
     public class SongController: ControllerBase {
 
-            private readonly songRepo ISongRepo
+            private readonly ISongRepo songRepo;
 
             public SongController( ISongRepo songRepo){
                 this. songRepo = songRepo

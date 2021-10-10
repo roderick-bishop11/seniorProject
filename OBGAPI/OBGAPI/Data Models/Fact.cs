@@ -7,5 +7,11 @@ namespace OBGAPI.DataModels
         public String fact { get; set; }
         public string link { get; set; }
         //public something image { get; set; }
+
+        public Fact(DateTime date, string fact, string link){
+          this.date = date;
+          this.fact = fact;
+          this.link = link;
+        }
     }
 }

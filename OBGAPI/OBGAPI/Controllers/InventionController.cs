@@ -13,33 +13,33 @@ namespace OBGAPI.Controllers {
 
     public class InventionController : ControllerBase {
 
-        private readonly ISongRepo songRepo;
+        private readonly I_InventionRepo IRepo;
 
-        public InventionController(ISongRepo songRepo){
-            this.songRepo = songRepo;
+        public InventionController(I_InventionRepo repo){
+            this.IRepo = repo;
         }
 
         //returns a single SONG entity at random
         [HttpGet]
-        public Song Get(){
-            return songRepo.Get();
+        public Invention Get(){
+            return IRepo.Get();
         }
 
-        //returns a single SONG entity given the unique id.
+        //returns a single INVENTION entity given the unique id/patentNo.
         [HttpGet]
-        public Song Get(string id){
-            return songRepo.Get(id);
+        public Invention Get(string id){
+            return IRepo.Get(id);
         }
 
-        //returns a single SONG entity from the category
+        //returns a single INVENTION entity from the category
         [HttpGet]
-        public Song Get(string cat){
-            return songRepo.Get(cat);
+        public Invention Get(string cat){
+            return IRepo.Get(cat);
         }
 
         // [HttpPost]
-        // public void Post([FromBody] Song song){
-        //     return figureRep.Post(song);
+        // public void Post([FromBody] Invention invention){
+        //     return IRepo.Post(invention);
 
         // }
 
