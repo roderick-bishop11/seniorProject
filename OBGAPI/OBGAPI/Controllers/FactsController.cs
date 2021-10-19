@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OBGAPI.Repos;
 using OBGAPI.DataModels;
+using OBGAPI.Service;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -39,6 +40,11 @@ namespace OBGAPI.Controllers
         [HttpGet]
         public List<Fact> Get(){
             return testFacts;
+        }
+
+        [HttpGet]
+        public Fact GetSingle(){
+            return SelectSingle.singleFact(testFacts);
         }
 
 
