@@ -5,10 +5,10 @@ namespace OBGAPI.Repos{
 
     public class SongRepo : ISongRepo{
 
-        private readonly SongContext _context;
+        private readonly SongContext cont;
 
-        public SongRepo(SongContext cont){
-            this._context = cont;
+        public SongRepo(SongContext context){
+            this.cont = context;
         }
 
 

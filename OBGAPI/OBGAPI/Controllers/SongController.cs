@@ -28,6 +28,8 @@ namespace OBGAPI.Controllers {
             //returns a single SONG entity by an artist
             [HttpGet]
             public Song Get (string artist){
+
+                //since our repo is set to query and get back a list, we're gonna select a single using our service.
                 return songRepo.GetUsingArtist(artist);
             }
 
