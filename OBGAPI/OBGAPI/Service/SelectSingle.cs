@@ -1,6 +1,6 @@
 using OBGAPI.DataModels;
-using OBGAPI.Repos;
-using System.Random;
+using System.Collections.Generic;
+using System;
 
 
 //this service will make the queries and single selections out of the lists returned from the DByo
@@ -8,7 +8,7 @@ namespace OBGAPI.Service {
 
 public class SelectSingle{
 
-private readonly Random  _num = new Random();
+static Random  _num = new Random();
 
 //SONG
 public static Song singleSong(List<Song> songs){
