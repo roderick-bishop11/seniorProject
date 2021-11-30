@@ -21,6 +21,8 @@ namespace OBGAPI.Controllers {
             //returns a single SONG entity at random
             [HttpGet]
             public Song Get (){
+
+                testSong.add("000x45sd", "artist", "2007", "elbert smith", "LA", "link" )
                 return songRepo.Get();
             }
             
