@@ -1,6 +1,5 @@
-using systems;
-using System.DateTime;
-
+using System;
+using System.Collections.Generic;
 
 namespace OBGAPI.DataModels
 {
@@ -12,6 +11,5 @@ namespace OBGAPI.DataModels
         private string name {get; set;}
         private string studio {get; set;}
         private string link  {get; set;}
-
     }
 }

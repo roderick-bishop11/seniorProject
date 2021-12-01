@@ -1,15 +1,27 @@
-using systems;
-using System.DateTime;
+using System.Collections.Generic;
+using OBGAPI.Enums;
+namespace OBGAPI.DataModels
+{
+    public class Invention
+    {
+        private int id;
+        private string patentId;
+        private string inventionName;
+        private string desc;
+        private Category category;
+        private List<Figure> inventors;
 
-
-namespace OBGAPI.DataModels{
-
-    public class Invention{
-
-        private String name {get;set;}
-        private String id_No {get; set;}
-        private String inventor {get; set;}
-        private Category category {get; set;}
-        
+        public Invention(int id, string patentId, string inventionName, string desc, Category category, List<Figure> inventors)
+        {
+            this.id = id;
+            this.patentId = patentId;
+            this.inventionName = inventionName;
+            this.desc = desc;
+            this.category = category;
+            this.inventors = inventors;
+        }
     }
+ 
+
+
 }

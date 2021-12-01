@@ -12,12 +12,14 @@
     <None Remove="Repos\" />
     <None Remove="Service\" />
     <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="Enums\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Data Models\" />
     <Folder Include="Repos\" />
     <Folder Include="Service\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />

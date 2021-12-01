@@ -25,7 +25,7 @@ namespace OBGAPI.Controllers
             this.factRepo = factRepo;
 
             //testing
-            testFacts.Add(new Fact{date = DateTime.Today(), fact = "October 7. Toni Morrison was the first black American to win the Nobel Prize in Literature.", link = "https://www.fs.fed.us/people/aasg/calendar/timeline.html"})
+            testFacts.Add(new Fact(DateTime.Today, "October 7. Toni Morrison was the first black American to win the Nobel Prize in Literature.", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"));
         }
         
   
