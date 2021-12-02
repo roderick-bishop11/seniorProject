@@ -17,18 +17,25 @@ namespace OBGAPI.Controllers
 
     {
         private readonly IFactRepo factRepo;
-        List<Fact> testFacts = new List<Fact>(); //testing
+        List<Fact> testFacts = new List<Fact>
+        {
+            new Fact(DateTime.Today, "October 7. Toni Morrison was the first black American to win the Nobel Prize in Literature.", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"),
+            new Fact(DateTime.Today, "Something", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"),
+            new Fact(DateTime.Today, "Whoopty doo", "https://www.fs.fed.us/people/aasg/calendar/timeline.html")
+
+
+    }; //testing
 
 
         public FactsController(IFactRepo factRepo)
+            
         {
+            Console.WriteLine("\n\n\nRan the constructor\n\n\n");
             this.factRepo = factRepo;
 
-            //testing
-            testFacts.Add(new Fact(DateTime.Today, "October 7. Toni Morrison was the first black American to win the Nobel Prize in Literature.", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"));
         }
-        
-  
+
+
         // //returns a single FACT entity at random
         // [HttpGet]
         // public async Task<ActionResult<Fact>> Get()
@@ -39,21 +46,26 @@ namespace OBGAPI.Controllers
 
         [HttpGet]
         public List<Fact> Get(){
-            return testFacts;
-        }
-
-        [HttpGet]
-        public Fact GetSingle(){
-            return SelectSingle.singleFact(testFacts);
-        }
-
-
-        [HttpPost]
-        public async Task<ActionResult<Fact>> Post([FromBody]Fact fact)
+            Console.WriteLine("Ran the get method");
+            return new List<Fact>
         {
-            var newFact = await factRepo.Create(fact);
-            return CreatedAtAction(nameof(Get), newFact);
-
+            new Fact(DateTime.Today, "October 7. Toni Morrison was the first black American to win the Nobel Prize in Literature.", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"),
+            new Fact(DateTime.Today, "Something", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"),
+            new Fact(DateTime.Today, "Whoopty doo", "https://www.fs.fed.us/people/aasg/calendar/timeline.html")};
         }
+
+        //[HttpGet]
+        //public Fact GetSingle(){
+        //    return SelectSingle.singleFact(testFacts);
+        //}
+
+
+        //[HttpPost]
+        //public async Task<ActionResult<Fact>> Post([FromBody]Fact fact)
+        //{
+        //    var newFact = await factRepo.Create(fact);
+        //    return CreatedAtAction(nameof(Get), newFact);
+
+        //}
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using OBGAPI.DataModels;
 
 namespace OBGAPI.Repos{
@@ -12,16 +13,22 @@ namespace OBGAPI.Repos{
         }
 
 
-        public List<Song> Get(){
+        public List<Song> Get()
+        {
+            return new List<Song>();
 
         }
 
-        public List<Song> Get(string artist){
+        public List<Song> GetUsingArtist(string artist)
+        {
+            return new List<Song>();
 
         }
 
-        
-        public List<Song> Get(string studio){
+
+        public List<Song> GetUsingStudio(string studio)
+        {
+            return new List<Song>();
 
         }
     }

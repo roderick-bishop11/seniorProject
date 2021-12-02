@@ -1,11 +1,14 @@
 using System;
 using OBGAPI.Enums;
+using OBGAPI.Service;
 
 
 namespace OBGAPI.DataModels
 {
     public class Figure
     {
+
+        //class members
         private int id { get; set; }
         private string name { get; set; }
         private Category category { get; set; }
@@ -15,17 +18,18 @@ namespace OBGAPI.DataModels
         private string city { get; set; }
 
 
-
-        public Figure(int id, string name, Category category, DateTime birthDate, DateTime deathDate, string bio, string city)
+        //constructor
+        public Figure(int id, string name, int temp, DateTime birthDate, DateTime deathDate, string bio, string city)
         {
             this.id = id;
             this.name = name;
-            this.category = category;
+            this.category = SelectCategory.categorySelector(temp);
             this.birthDate = birthDate;
             this.deathDate = deathDate;
             this.bio = bio;
             this.city = city;
         }
+
     }
 
 }

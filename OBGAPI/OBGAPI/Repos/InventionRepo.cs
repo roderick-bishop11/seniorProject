@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using OBGAPI.DataModels;
 
@@ -15,14 +16,15 @@ namespace OBGAPI.Repos
 
         
         public List<Invention> Get(){
-
+            return new List<Invention>();
         }
 
-        public List<Invention> Get(string id){
-
+        public List<Invention> GetUsingId(string id){
+            return new List<Invention>();
         }
 
-        public List<Invention> Get(string cat){
+        public List<Invention> GetUsingCategory(int cat){
+            return new List<Invention>();
 
         }
 
