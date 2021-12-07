@@ -1,0 +1,194 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| information_schema |
+| mysql              |
+| OBG_API            |
+| order_processing   |
+| performance_schema |
+| salesperson_trips  |
+| student_grade      |
+| sys                |
++--------------------+
+9 rows in set (0.01 sec)
+
+mysql> user OBG_API
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'user OBG_API' at line 1
+mysql> use OBG_API;
+Database changed
+mysql> show tables
+    -> ;
+Empty set (0.01 sec)
+
+mysql> create table figure;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table figure (
+    -> Id int not null auto_increment primary key,
+    -> Fname varchar(100) not null,
+    -> Lname varchar(100),
+    -> Birth_Date date,
+    -> Death_Date date,
+    -> City varchar(100),
+    -> Category int,
+    -> Bio Text);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc figure;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| Id         | int          | NO   | PRI | NULL    | auto_increment |
+| Fname      | varchar(100) | NO   |     | NULL    |                |
+| Lname      | varchar(100) | YES  |     | NULL    |                |
+| Birth_Date | date         | YES  |     | NULL    |                |
+| Death_Date | date         | YES  |     | NULL    |                |
+| City       | varchar(100) | YES  |     | NULL    |                |
+| Category   | int          | YES  |     | NULL    |                |
+| Bio        | text         | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.01 sec)
+
+mysql> create table fact (
+    -> Id int not null auto_increment primary key,
+    -> Date date,
+    -> Fact text,
+    -> Fig_name text,
+    -> Fig_Id int,
+    -> Link text,
+    -> foreign key (Fig_Id) references Figure (Id) on update cascade on delete cascade);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc fact;
++----------+------+------+-----+---------+----------------+
+| Field    | Type | Null | Key | Default | Extra          |
++----------+------+------+-----+---------+----------------+
+| Id       | int  | NO   | PRI | NULL    | auto_increment |
+| Date     | date | YES  |     | NULL    |                |
+| Fact     | text | YES  |     | NULL    |                |
+| Fig_name | text | YES  |     | NULL    |                |
+| Fig_Id   | int  | YES  | MUL | NULL    |                |
+| Link     | text | YES  |     | NULL    |                |
++----------+------+------+-----+---------+----------------+
+6 rows in set (0.01 sec)
+
+mysql> create table song(
+    -> Id int not null auto_increment primary key,
+    -> Artist_Fname varchar(100) not null, 
+    -> Artist_Lname varchar(100),
+    -> Rec_Studio text,
+    -> Song_title text,
+    -> Album title text,
+    -> ^C
+mysql> create table song(
+    -> Id int not null auto_increment primary key,
+    -> Artist_Fname varchar(100),
+    -> Artist_Lanem varchar(100),
+    -> Rec_Studio text,
+    -> Song_Title text,
+    -> Album_Title text,
+    -> Link text,
+    -> Year int,
+    -> foreign key (Artist_Fname) references figure(Fig_name),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 11
+mysql> create table song( Id int not null auto_increment primary key, Artist_Fname varchar(100), Artist_Lname varchar(100), Rec_Studio text, Song_Title text, Album_Title text, Link text, Year int );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc song;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| Id           | int          | NO   | PRI | NULL    | auto_increment |
+| Artist_Fname | varchar(100) | YES  |     | NULL    |                |
+| Artist_Lname | varchar(100) | YES  |     | NULL    |                |
+| Rec_Studio   | text         | YES  |     | NULL    |                |
+| Song_Title   | text         | YES  |     | NULL    |                |
+| Album_Title  | text         | YES  |     | NULL    |                |
+| Link         | text         | YES  |     | NULL    |                |
+| Year         | int          | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> create table invention(
+    -> Id int not null auto_increment primary key,
+    -> Patent_Id_No varchar(255),
+    -> Invention_name text not null,
+    -> Category int,
+    -> Desc text,
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Desc text,
+)' at line 6
+mysql> create table invention( Id int not null auto_increment primary key, Patent_Id_No varchar(255), Invention_name text not null, Category int, Desc text );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Desc text )' at line 1
+mysql> create table invention( Id int not null auto_increment primary key, Patent_Id_No varchar(255), Invention_name text not null, Category int, Description text );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_obg_api |
++-------------------+
+| fact              |
+| figure            |
+| invention         |
+| song              |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> desc fact;
++----------+------+------+-----+---------+----------------+
+| Field    | Type | Null | Key | Default | Extra          |
++----------+------+------+-----+---------+----------------+
+| Id       | int  | NO   | PRI | NULL    | auto_increment |
+| Date     | date | YES  |     | NULL    |                |
+| Fact     | text | YES  |     | NULL    |                |
+| Fig_name | text | YES  |     | NULL    |                |
+| Fig_Id   | int  | YES  | MUL | NULL    |                |
+| Link     | text | YES  |     | NULL    |                |
++----------+------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> desc figure;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| Id         | int          | NO   | PRI | NULL    | auto_increment |
+| Fname      | varchar(100) | NO   |     | NULL    |                |
+| Lname      | varchar(100) | YES  |     | NULL    |                |
+| Birth_Date | date         | YES  |     | NULL    |                |
+| Death_Date | date         | YES  |     | NULL    |                |
+| City       | varchar(100) | YES  |     | NULL    |                |
+| Category   | int          | YES  |     | NULL    |                |
+| Bio        | text         | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> desc song;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| Id           | int          | NO   | PRI | NULL    | auto_increment |
+| Artist_Fname | varchar(100) | YES  |     | NULL    |                |
+| Artist_Lname | varchar(100) | YES  |     | NULL    |                |
+| Rec_Studio   | text         | YES  |     | NULL    |                |
+| Song_Title   | text         | YES  |     | NULL    |                |
+| Album_Title  | text         | YES  |     | NULL    |                |
+| Link         | text         | YES  |     | NULL    |                |
+| Year         | int          | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> desc invention;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| Id             | int          | NO   | PRI | NULL    | auto_increment |
+| Patent_Id_No   | varchar(255) | YES  |     | NULL    |                |
+| Invention_name | text         | NO   |     | NULL    |                |
+| Category       | int          | YES  |     | NULL    |                |
+| Description    | text         | YES  |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
