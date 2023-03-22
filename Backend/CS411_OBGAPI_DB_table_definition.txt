@@ -1,0 +1,225 @@
+mysql> show databases();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> show databases;
++----------------------+
+| Database             |
++----------------------+
+| company              |
+| CS411_OBGAPI_BACKEND |
+| information_schema   |
+| mysql                |
+| OBG_API              |
+| order_processing     |
+| performance_schema   |
+| salesperson_trips    |
+| student_grade        |
+| sys                  |
++----------------------+
+10 rows in set (0.01 sec)
+
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> show databases()
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> select database() from dual;
++----------------------+
+| database()           |
++----------------------+
+| cs411_obgapi_backend |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> --the current db we are using is cs411_obgapi_backend
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--the current db we are using is cs411_obgapi_backend' at line 1
+mysql> # the current db we are using is cs411_obgapi_backend;
+mysql> create table figure(
+    -> Fig_Id int not null auto_generated primary key,
+    -> Name varchar(255) not null,
+    -> Birth_Date date not null,
+    -> Death_Date date,
+    -> Birth_City text not null,
+    -> Category int,
+    -> Bio text not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'auto_generated primary key,
+Name varchar(255) not null,
+Birth_Date date not null' at line 2
+mysql> create table figure( Fig_Id int not null auto_generated primary key, Name varchar(255) not null, Birth_Date date, Death_Date date, Birth_City text not null, Category int, Bio text not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'auto_generated primary key, Name varchar(255) not null, Birth_Date date, Death_D' at line 1
+mysql> create table figure( Fig_Id int not null auto_increment primary key, Name varchar(255) not null, Birth_Date date not null, Death_Date date, Birth_City text not null, Category int, Bio text not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table invention(
+    -> Invention_Id int not null primary key,
+    -> \
+    -> c
+    -> \c
+mysql> create table invention(
+    -> Invention_Id int not null auto_increment primary key,
+    -> Patent_id_no varchar(100) not null,
+    -> Ivention_name varchar(255) not null,
+    -> Category int,
+    -> Description text not null);
+Query OK, 0 rows affected (0.03 sec)
+mysql> create table Invention_Inventors( Invention_Id int not null foreign key references Invention(Invention_Id), Id_From_Fig int not null foreign key references Figure(Fig_Id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key references Invention(Invention_Id), Id_From_Fig int not null foreign' at line 1
+mysql> create table Inventio_Inventors(
+    -> Invention_Id int not null,
+    -> Id_From_Fig int not null,
+    -> foreign key (Invention_Id) references Invention(Inventio_Id) on delete restrict on update cascade,
+    -> foreign key (Id_From_Fig) references Figure(Fig_Id) on delete cascade, on update restrict,
+    -> Constraint PK_Invention_Invention primary key(Invention_Id, Id_From_Fig);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on update restrict,
+Constraint PK_Invention_Invention primary key(Invention_Id, ' at line 5
+mysql> create table Invention_Inventors( Invention_Id int not null, Id_From_Fig int not null, foreign key (Invention_Id) references Invention(Invention_Id) on delete restrict on update cascade, foreign key (Id_From_Fig) references Figure(Fig_Id) on delete cascade on update restrict, Constraint PK_Invention_Invention primary key(Invention_Id, Id_From_Fig);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql>create table Invention_Inventors( 
+    ->Invention_Id int not null, 
+    ->Id_From_Fig int not null, 
+    ->foreign key (Invention_Id) references Invention(Invention_Id) on delete restrict on update cascade, 
+    ->foreign key (Id_From_Fig) references Figure(Fig_Id) on delete cascade on update restrict, 
+    ->Constraint PK_Invention_Invention primary key(Invention_Id, Id_From_Fig));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> show tables;
++--------------------------------+
+| Tables_in_cs411_obgapi_backend |
++--------------------------------+
+| figure                         |
+| invention                      |
+| Invention_Inventors            |
++--------------------------------+
+3 rows in set (0.02 sec)
+
+mysql> create table Created_By(
+    -> Id_From_Fig int not null,
+    -> Id_From_Invention int not null,
+    -> foreign key (Id_From_Invention) references Invention(Invention_Id) on delete restrict on update restrict,
+    -> foreign key (Id_From_Fig) references Figure(Fig_Id) on delete cascade on update restrict,
+    -> Constraint PK_Created_By primary key(Id_From_Fig, Id_From_Invention)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table song(
+    -> \c
+mysql> desc figure;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| Fig_Id     | int          | NO   | PRI | NULL    | auto_increment |
+| Name       | varchar(255) | NO   |     | NULL    |                |
+| Birth_Date | date         | NO   |     | NULL    |                |
+| Death_Date | date         | YES  |     | NULL    |                |
+| Birth_City | text         | NO   |     | NULL    |                |
+| Category   | int          | YES  |     | NULL    |                |
+| Bio        | text         | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.01 sec)
+
+mysql> create table song (
+    -> Song_Id int not null auto_increment primary key,
+    -> Song_Title varchar(255) not null,
+    -> Album_Title varchar(255), 
+    -> Rec_Studio Varchar(255),
+    -> Year int not null,
+    -> Link text);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table Song_Artists(
+    -> Id_From_Song int not null,
+    -> Id_From_Figure int not null,
+    -> foreign key (Id_From_Song) references Song(Song_Id) on update restrict, on delete cascade,
+    -> foreign key (Id_From_Figure) references Figure(Fig_Id) on update restrict, on delete cascade,
+    -> Constraint PK_Song_Artist primary key(Id_From_Song, Id_From_Figure) );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on delete cascade,
+foreign key (Id_From_Figure) references Figure(Fig_Id) on upd' at line 4
+mysql> create table Song_Artists( Id_From_Song int not null, Id_From_Figure int not null, foreign key (Id_From_Song) references Song(Song_Id) on update restrict on delete cascade, foreign key (Id_From_Figure) references Figure(Fig_Id) on update restrict on delete cascade, Constraint PK_Song_Artist primary key(Id_From_Song, Id_From_Figure) );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++--------------------------------+
+| Tables_in_cs411_obgapi_backend |
++--------------------------------+
+| Created_By                     |
+| figure                         |
+| invention                      |
+| Invention_Inventors            |
+| song                           |
+| Song_Artists                   |
++--------------------------------+
+6 rows in set (0.01 sec)
+
+mysql> alter table Song_Artists raname colulmn Id_From_Song to Song_Id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'raname colulmn Id_From_Song to Song_Id' at line 1
+mysql> alter table Song_Artists raname column Id_From_Song to Song_Id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'raname column Id_From_Song to Song_Id' at line 1
+mysql> alter table Song_Artists rename column Id_From_Song to Song_Id;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Song_Artists;
++----------------+------+------+-----+---------+-------+
+| Field          | Type | Null | Key | Default | Extra |
++----------------+------+------+-----+---------+-------+
+| Song_Id        | int  | NO   | PRI | NULL    |       |
+| Id_From_Figure | int  | NO   | PRI | NULL    |       |
++----------------+------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> # renamed because Song_Artists is the mv attribute and not a relation;
+mysql> create table performs (
+    -> Id_From_Figure int not null,
+    -> Id_From_Song int not null,
+    -> \c
+mysql> create table performs ( Id_From_Fig int not null, Id_From_Song int not null, foreign key (Id_From_Fig) references Figure(Fig_Id) on update restrict on delete cascade,
+    -> foreign key (Id_From_Song) references Song(Song_Id) on update restrict, on delete cascade,
+    -> Constraint PK_Performs primary key (Id_From_Fig, Id_From_Song)
+    -> 
+    -> 
+    -> 
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on delete cascade,
+Constraint PK_Performs primary key (Id_From_Fig, Id_From_Song' at line 2
+mysql> create table performs ( Id_From_Fig int not null, Id_From_Song int not null, foreign key (Id_From_Fig) references Figure(Fig_Id) on update restrict on delete cascade, foreign key (Id_From_Song) references Song(Song_Id) on update restrict, on delete cascade, Constraint PK_Performs primary key (Id_From_Fig, Id_From_Song));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on delete cascade, Constraint PK_Performs primary key (Id_From_Fig, Id_From_Song' at line 1
+mysql> create table performs ( Id_From_Fig int not null, Id_From_Song int not null, foreign key (Id_From_Fig) references Figure(Fig_Id) on update restrict on delete cascade, foreign key (Id_From_Song) references Song(Song_Id) on update restrict on delete cascade, Constraint PK_Performs primary key (Id_From_Fig, Id_From_Song));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table fact(
+    -> Fact_Id int not null auto_increment primary key,
+    -> Date date not null,
+    -> Id_From_Fig not null,
+    -> Name_From_Fig not null,
+    -> Fact text,
+    -> link text,
+    -> foreign key (Id_From_Fig) references Figure(Fig_Id) on update restrict delete cascade,
+    -> \c
+mysql> create table fact( Fact_Id int not null auto_increment primary key, Date date not null, Id_From_Fig not null, Fact text, link text, foreign key (Id_From_Fig) references Figure(Fig_Id) on update restrict delete cascade);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null, Fact text, link text, foreign key (Id_From_Fig) references Figure(Fig_' at line 1
+mysql> create table fact( Fact_Id int not null auto_increment primary key, today_date date not null, Id_From_Fig not null, Fact text, link text, foreign key (Id_From_Fig) references Figure(Fig_Id) on update restrict delete cascade);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null, Fact text, link text, foreign key (Id_From_Fig) references Figure(Fig_' at line 1
+mysql> create table fact( Fact_Id int not null auto_increment primary key, fact_date date, Id_From_Fig not null, Fact text, link text, foreign key (Id_From_Fig) references Figure(Fig_Id) on update restrict delete cascade);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null, Fact text, link text, foreign key (Id_From_Fig) references Figure(Fig_' at line 1
+mysql> create table fact( Fact_Id int not null auto_increment primary key, fact_date date, Id_From_Fig int not null, Fact text, link text, foreign key (Id_From_Fig) references Figure(Fig_Id) on update restrict delete cascade);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delete cascade)' at line 1
+mysql> create table fact( Fact_Id int not null auto_increment primary key, fact_date date, Id_From_Fig int not null, Fact text, link text, foreign key (Id_From_Fig) references Figure(Fig_Id) on update restrict on delete cascade);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++--------------------------------+
+| Tables_in_cs411_obgapi_backend |
++--------------------------------+
+| Created_By                     |
+| fact                           |
+| figure                         |
+| invention                      |
+| Invention_Inventors            |
+| performs                       |
+| song                           |
+| Song_Artists                   |
++--------------------------------+
+8 rows in set (0.00 sec)
+
+mysql> \q

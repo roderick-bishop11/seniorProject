@@ -13,28 +13,29 @@ namespace OBGAPI.Controllers
 {
     [Route("api/[controller]")] //creates a route for
     [ApiController]
-    public class FactsController : ControllerBase
+    public class FactsController : Controller
 
     {
         private readonly IFactRepo factRepo;
-        List<Fact> testFacts = new List<Fact>
-        {
-            new Fact(DateTime.Today, "October 7. Toni Morrison was the first black American to win the Nobel Prize in Literature.", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"),
-            new Fact(DateTime.Today, "Something", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"),
-            new Fact(DateTime.Today, "Whoopty doo", "https://www.fs.fed.us/people/aasg/calendar/timeline.html")
-
-
-    }; //testing
-
+        List<Fact> testFacts = new List<Fact>();
+     
+      
 
         public FactsController(IFactRepo factRepo)
             
         {
             Console.WriteLine("\n\n\nRan the constructor\n\n\n");
             this.factRepo = factRepo;
-
         }
 
+        public FactsController()
+
+        {
+            Console.WriteLine("\n\n\nRan the constructor\n\n\n");
+            testFacts.Add(new Fact(DateTime.Today, "Something", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"));
+            testFacts.Add(new Fact(DateTime.Today, "Whoopty doo", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"));
+
+        }
 
         // //returns a single FACT entity at random
         // [HttpGet]
@@ -45,14 +46,14 @@ namespace OBGAPI.Controllers
         // }
 
         [HttpGet]
-        public List<Fact> Get(){
-            Console.WriteLine("Ran the get method");
-            return new List<Fact>
+        public IEnumerable<string> Get()
         {
-            new Fact(DateTime.Today, "October 7. Toni Morrison was the first black American to win the Nobel Prize in Literature.", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"),
-            new Fact(DateTime.Today, "Something", "https://www.fs.fed.us/people/aasg/calendar/timeline.html"),
-            new Fact(DateTime.Today, "Whoopty doo", "https://www.fs.fed.us/people/aasg/calendar/timeline.html")};
+            Console.WriteLine("Ran the get method");
+            //return testFacts;
+            return new string[] { "hello", "world" };
         }
+
+
 
         //[HttpGet]
         //public Fact GetSingle(){

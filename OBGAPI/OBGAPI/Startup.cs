@@ -29,7 +29,21 @@ namespace OBGAPI
         {
             services.AddScoped<IFactRepo, FactRepo>();
             services.AddDbContext<FactContext>(
+              options => options.UseSqlite()); // <-- Change this
+
+            services.AddScoped<IFigureRepo, FigureRepo>();
+            services.AddDbContext<FigureContext>(
               options => options.UseSqlite());
+
+            services.AddScoped<ISongRepo, SongRepo>();
+            services.AddDbContext<SongContext>(
+              options => options.UseSqlite());
+
+            services.AddScoped<I_InventionRepo, InventionRepo>();
+            services.AddDbContext<InventionContext>(
+              options => options.UseSqlite());
+
+
             services.AddControllers();
             services.AddRazorPages();
             services.AddSwaggerGen();

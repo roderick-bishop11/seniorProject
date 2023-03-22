@@ -4,12 +4,12 @@ namespace OBGAPI.DataModels
 {
     public class Invention
     {
-        private int id;
-        private string patentId;
-        private string inventionName;
-        private string desc;
-        private Category category;
-        private List<Figure> inventors;
+        public int id;
+        public string patentId;
+        public string inventionName;
+        public string desc;
+        public Category category;
+        public List<Figure> inventors;
 
         public Invention(int id, string patentId, string inventionName, string desc, Category category, List<Figure> inventors)
         {

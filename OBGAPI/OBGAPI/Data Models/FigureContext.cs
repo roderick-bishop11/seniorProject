@@ -9,6 +9,6 @@ namespace OBGAPI.DataModels
                 Database.EnsureCreated(); //ensuring that the DB(temp) is created
             }
 
-            public DbSet<Fact> Facts { get; set; }
+            public DbSet<Figure> figures { get; set; }
         }
 }

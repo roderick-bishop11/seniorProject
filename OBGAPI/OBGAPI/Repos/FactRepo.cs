@@ -27,8 +27,8 @@ namespace OBGAPI.Repos
         //Deletes a fact that is found on a specific date. 
         public async Task Delete(DateTime date)
         {
-            var selectedFact = await _context.Facts.FindAsync(date);
-            _context.Facts.Remove(selectedFact);
+            var selectedFact = await _context.facts.FindAsync(date);
+            _context.facts.Remove(selectedFact);
             await _context.SaveChangesAsync();
 
         }
@@ -38,7 +38,7 @@ namespace OBGAPI.Repos
         {
             var date = DateTime.Today;
 
-            return await _context.Facts.FindAsync(date);
+            return await _context.facts.FindAsync(date);
         }
     }
 }
